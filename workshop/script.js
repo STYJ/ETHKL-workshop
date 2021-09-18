@@ -81,7 +81,3 @@ async function main() {
 }
 
 main();
-
-// How to deploy a smart contract?
-// How to use ABIs to read from a contract?
-// How to use ABIs to write to a contract?

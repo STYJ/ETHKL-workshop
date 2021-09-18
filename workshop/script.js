@@ -7,12 +7,16 @@ const bytecode = "608060405234801561001057600080fd5b50610150806100206000396000f3
 async function main() {
   // 1. Connect to Ethereum via WebSocketProvider
 
+  // Use your own infura api key here.
+  // I'm using websocket but you can use the json rpc provider. Don't forget to change the rpc provider below as well.
   let url = "wss://ropsten.infura.io/ws/v3/c6affdcdfdd84d5abd95dbe6b293703d";
   let provider = new ethers.providers.WebSocketProvider(url);
   // console.log(await provider.getBlockNumber());
   // process.exit(0);
 
   // 2. Create a wallet (signer) and connect to provider
+  // DO NOT EXPOSE YOUR PRIVATE KEYS LIKE THIS!
+  // THERE ARE BOTS WHO ARE CRAWLING GITHUB REPOS AND THEY REACT REALLY FAST.
   let pk = "0x4287fd2943090efe793409e2cbd79bda2430fa257dd657f33b03bb5b9509de76";
   let wallet = new ethers.Wallet(pk);
   // console.log(wallet.address);

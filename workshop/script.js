@@ -36,48 +36,48 @@ async function main() {
   // console.log(balance); // Will return bignumber, explain the use of bignumber.
   // console.log(ethers.utils.formatEther(balance));
 
-  // // 6. Create contract factory
-  // console.log("Creating factory");
-  // let factory = new ethers.ContractFactory(abi, bytecode, wallet);
+  // 6. Create contract factory
+  console.log("Creating factory");
+  let factory = new ethers.ContractFactory(abi, bytecode, wallet);
 
-  // // 7. Deploy an instance of the contract
-  // console.log("Deploying contract")
-  // let contract = await factory.deploy();
-  // let tx = contract.deployTransaction; 
-  // tx.wait() // defaults to 1 block
-  // .then(async (receipt) => {
-  //   console.log("Transaction hash:", receipt);
-  //   process.exit(0);
-  //   // When done, uncomment the bottom steps and comment out steps 6 and 7.
-  // })
-
-
-  // 8. Use address to get an instance of the contract
-  let address = "0x50Fc39Dd3eede305ca427e6c3C17dA1D9e0bDE3a";
-  let contract = new ethers.Contract(address, abi, wallet);
-
-  // 9. Call the value on the deployed smart contract (defaults to 0);
-  console.log("Retrieve value in contract");
-  let val = await contract.retrieve();
-  console.log(val);             // this is a bn
-  console.log(val.toString());  // this is a string
-
-  // 10. Set a value on the deployed smart contract
-  console.log("Setting value in contract");
-  let tx = await contract.store(42);
-  tx.wait()
+  // 7. Deploy an instance of the contract
+  console.log("Deploying contract")
+  let contract = await factory.deploy();
+  let tx = contract.deployTransaction; 
+  tx.wait() // defaults to 1 block
   .then(async (receipt) => {
     console.log("Transaction hash:", receipt);
-
-    // 11. Call the value on the deployed smart contract, do not put this outside or it'll be called asynchronously
-    console.log("Retrieve value in contract again");
-    val = await contract.retrieve();
-    console.log(val);             // this is a bn
-    console.log(val.toString());  // this is a string
     process.exit(0);
+    // When done, uncomment the bottom steps and comment out steps 6 and 7.
   })
 
-  // 12. Check the data on etherscan.
+
+  // // 8. Use address to get an instance of the contract
+  // let address = "0x50Fc39Dd3eede305ca427e6c3C17dA1D9e0bDE3a";
+  // let contract = new ethers.Contract(address, abi, wallet);
+
+  // // 9. Call the value on the deployed smart contract (defaults to 0);
+  // console.log("Retrieve value in contract");
+  // let val = await contract.retrieve();
+  // console.log(val);             // this is a bn
+  // console.log(val.toString());  // this is a string
+
+  // // 10. Set a value on the deployed smart contract
+  // console.log("Setting value in contract");
+  // let tx = await contract.store(42);
+  // tx.wait()
+  // .then(async (receipt) => {
+  //   console.log("Transaction hash:", receipt);
+
+  //   // 11. Call the value on the deployed smart contract, do not put this outside or it'll be called asynchronously
+  //   console.log("Retrieve value in contract again");
+  //   val = await contract.retrieve();
+  //   console.log(val);             // this is a bn
+  //   console.log(val.toString());  // this is a string
+  //   process.exit(0);
+  // })
+
+  // // 12. Check the data on etherscan.
 }
 
 main();

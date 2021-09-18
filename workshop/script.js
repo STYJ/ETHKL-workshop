@@ -82,6 +82,8 @@ async function main() {
   // })
 
   // // 12. Check the data on etherscan.
+
+  // // 13. If there is time, do another example for mainnet ERC20 tokens
 }
 
 main();
